@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 });*/
 
 app.get('/contactos', (req, res) => {
+
     if (req.query.telefono) { // queryString de telefono
         let resultado = contactos.filter(contacto => contacto.telefono === req.query.telefono);
         if (resultado && resultado.length > 0) {
@@ -41,7 +42,7 @@ app.get('/contactos', (req, res) => {
         } else { // No hay contactos con ese teléfono --> Error 400
             res.status(400).send({error: "No hay contactos con ese teléfono" });
         }
-    } else { // Listado de contactos
+    } else { // Listado de contactos completo
         if (contactos && contactos.length > 0) {
             res.status(200).send({contactos: contactos });
         } else { // Si falla el servidor a la hora de recuperar los datos --> error 500
@@ -57,7 +58,7 @@ app.post('/contactos', (req, res) => {
     let existe = contactos.filter(contact => contact.nombre === newContact.nombre);
     if (existe.length === 0) { // Lo añadimos y enviamos un ok
         contactos.push(newContact);
-        res.status(201).send(newContact);
+        res.status(201).send(newContact); // Se inserta un objeto
     } else { // Enviamos el error
         res.status(400).send({error: "Contacto duplicado" });
     }
@@ -83,15 +84,15 @@ app.put('/contactos', (req, res) => {
 
 app.delete('/contactos', (req, res) => {
     let filtrado = contactos.filter(
-        contacto => contacto.nombre != req.params['nombre']
+        contacto => contacto.nombre != req.query.nombre
     );
     if (filtrado.length != contactos.length) {
         // El contacto existe. Reemplazamos el array y OK
         contactos = filtrado;
-        res.status(204).send();
+        res.status(204).send({error: "Contacto no sdsadas sdadºa dasd asdasd"}); // El mensaje 204 no devuelve nada, solo el status
     } else {
         // No se ha filtrado nada. El contacto no existe
-        res.status(400).send({error: "Contacto no encontrado"});
+        res.status(400).send({error: `Contacto: '${req.query.nombre}' no encontrado `});
     }
 });
 

@@ -7,8 +7,8 @@ import fs from 'fs'; // Incluimos el módulo fs
  * @param {*} response 
  */
 let peticion = (request, response) => {
-    /*response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("Bienvenidos a mi servidor con NodeJS");*/
+    /* response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write("Bienvenidos a mi servidor con NodeJS"); */
     response.writeHead(200, {"Content-Type": "text/html"});
     let contenido = fs.readFileSync('./index.html', 'utf-8');
     response.write(contenido);
