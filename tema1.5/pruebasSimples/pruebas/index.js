@@ -26,13 +26,13 @@ app.get('/', (req, res) => {
     res.send(resultado);
 });*/
 
-/*app.get('/contactos', (req, res) => {
+/* app.get('/contactos', (req, res) => {
     if(req.query.telefono){ // queryString de telefono
         let resultado = contactos.filter(contacto => contacto.telefono == req.query.telefono);
         res.send(resultado);
     }else res.send(resultado);
-});*/
-
+});
+ */
 app.get('/contactos', (req, res) => {
 
     if (req.query.telefono) { // queryString de telefono
