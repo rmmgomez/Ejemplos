@@ -82,3 +82,7 @@ contacto1.save().then(resultado => {
 }).catch(error => {
     console.log("ERROR añadiendo al contacto:", error);
 });
+
+Contacto.find().populate("mascotas").then(resultado =>{
+    console.log(resultado);
+});
