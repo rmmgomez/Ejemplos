@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Listado de libros</h1>
+            <div>
+                <table>
+                    {% for libro in libros %}
+                        <tr>
+                            <td>{{ libro.titulo }}</td>
+                            <td><a class="btn btn-success" href="/libros/{{ libro.id }}">Ver ficha</a></td>
+                        </tr>
+                    {% else %}
+                        <tr><td>No hay libros que mostrar.</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

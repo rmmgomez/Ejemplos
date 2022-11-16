@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <style>
+            .par { color: red; }
+            .impar { color: blue }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Listado de contactos</h1>
+            <div>
+                <ul>
+                    {% for contacto in contactos %}
+                        {% if loop.index % 2 == 0 %}
+                            <li class="par">
+                        {% else %}
+                            <li class="impar">
+                        {% endif %}
+                        {{ contacto.nombre }}</li>
+                    {% else %}
+                        <li>No hay contactos que mostrar.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

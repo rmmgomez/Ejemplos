@@ -9,7 +9,7 @@ import restaurantes from './routes/restaurantes.js';
 import contactos from './routes/contactos.js';
 
 // Conexión con la BD
-mongoose.connect('mongodb://localhost:27017/contactos', {useNewUrlParser: true});
+mongoose.connect('mongodb://127.0.0.1:27017/contactos', {useNewUrlParser: true});
 let app = express();
 
 // Carga de middleware y enrutadores
